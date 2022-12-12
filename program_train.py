@@ -312,6 +312,49 @@ def question_16():
     Note：数据已于2013-11-19日加强，原来通过的代码可能不能再次通过。
     :return:
     """
+    # list1=['零 壹 贰 叁 肆 伍 陆 柒 捌 玖 拾 佰 仟 万']
+    list1=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖','拾']
+    list2=['圆','拾','佰','仟','万',]#'拾万','百万','千万'
+    value=-3456712
+    v=str(value)
+    # 初始化字符串
+    str1=''
+    str2=''
+    str3=''
+
+    #判断是否为负数
+    if(v[0]=='-'):
+        str1='负'
+        v=v.replace('-','')
+
+    #字符串切片
+    a = str(v[:-5])
+    b = str(v[len(a):len(v)])
+
+    # 处理万位以前
+    for j in range(len(a)):
+        a.replace(a[j], list1[j+1])
+        str2+=list1[int(a[j])] + list2[len(a)-j]
+
+    # 处理后五位数
+    for i in range(len(b)):
+        b.replace(b[i], list1[i])
+        str3 += list1[int(b[i])] + list2[len(b) - i - 1]
+
+    print(str1+str2+str3)
+
+
+
+    # else:
+    #     b=str(a[:-5])
+    #     for j in range(len(b)):
+    #         b.replace(b[j],list1[j])
+    #     print(b)
+
+
+
+
+    # print(list1[1])
 
 question_16()
 # question_15()
